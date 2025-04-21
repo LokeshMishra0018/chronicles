@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology News - Chronicles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+
+        .dark-mode header,
+        .dark-mode footer {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+        }
+
+        .dark-mode .news-card,
+        .dark-mode .category-news-card,
+        .dark-mode .trending-item,
+        .dark-mode .newsletter {
+            background-color: #2d2d2d;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-mode .news-card h3 a,
+        .dark-mode .category-news-card h3 a,
+        .dark-mode .trending-content h3 a {
+            color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background-color: #f8f8f8;
+            font-size: 0.9rem;
+        }
+
+        .date-time span {
+            margin-right: 15px;
+        }
+
+        .weather-widget span {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            margin-left: 15px;
+            color: #555;
+        }
+
+        .dark-mode-toggle {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background-color: #c0392b;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #fff;
+            color: #e74c3c;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Breaking News Ticker */
+        .breaking-news {
+            display: flex;
+            background-color: #c0392b;
+            color: white;
+            padding: 10px 5%;
+        }
+
+        .breaking-label {
+            font-weight: 700;
+            margin-right: 15px;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker ul {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+
+        .ticker li {
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        .ticker a {
+            color: white;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* News Counter */
+        .news-counter {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 5%;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .counter-item {
+            text-align: center;
+        }
+
+        .counter-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e74c3c;
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 0 5%;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            color: #333;
+        }
+
+        .dark-mode .section-title {
+            color: #f5f5f5;
+        }
+
+        /* Featured News */
+        .featured-news {
+            margin-bottom: 40px;
+        }
+
+        .featured-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .main-featured {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-featured img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .technology {
+            background-color: #3498db;
+        }
+
+        .world {
+            background-color: #e74c3c;
+        }
+
+        .business {
+            background-color: #2ecc71;
+        }
+
+        .sports {
+            background-color: #f39c12;
+        }
+
+        .entertainment {
+            background-color: #9b59b6;
+        }
+
+        .health {
+            background-color: #1abc9c;
+        }
+
+        .science {
+            background-color: #34495e;
+        }
+
+        .politics {
+            background-color: #7f8c8d;
+        }
+
+        .featured-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .featured-content h3 a {
+            color: white;
+        }
+
+        .featured-content p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .meta {
+            display: flex;
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+
+        .meta span {
+            margin-right: 15px;
+        }
+
+        .secondary-featured {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .featured-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .featured-item-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .featured-item-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .featured-item-content h4 a {
+            color: white;
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .news-card {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .news-content h3 a {
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .news-content h3 a:hover {
+            color: #e74c3c;
+        }
+
+        .news-content p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .dark-mode .news-content p {
+            color: #ccc;
+        }
+
+        /* Load More Button */
+        .load-more {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 25px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .load-more:hover {
+            background-color: #c0392b;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #e74c3c;
+            border-bottom-color: #e74c3c;
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .category-news {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-news-card {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-news-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .category-news-content {
+            padding: 15px;
+        }
+
+        .category-news-content h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .category-news-content h3 a {
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .category-news-content h3 a:hover {
+            color: #e74c3c;
+        }
+
+        /* Trending News */
+        .trending-news {
+            margin-bottom: 40px;
+        }
+
+        .trending-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .trending-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trending-item:last-child {
+            border-bottom: none;
+        }
+
+        .trending-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            min-width: 40px;
+        }
+
+        .trending-content {
+            flex-grow: 1;
+        }
+
+        .trending-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .trending-content h3 a {
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .trending-content h3 a:hover {
+            color: #e74c3c;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: #e74c3c;
+            color: white;
+            padding: 40px 5%;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        #newsletter-form {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #newsletter-form input {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 70%;
+            font-size: 1rem;
+        }
+
+        #newsletter-form button {
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #newsletter-form button:hover {
+            background-color: #222;
+        }
+
+        .success-message {
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* Video News */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-content {
+            padding: 15px;
+        }
+
+        .video-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .video-content h3 a {
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .video-content h3 a:hover {
+            color: #e74c3c;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 5% 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-about h3,
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-about p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-top: 15px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #e74c3c;
+            width: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: #e74c3c;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .featured-container {
+                grid-template-columns: 1fr;
+            }
+
+            .secondary-featured {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #333;
+                flex-direction: column;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li a {
+                padding: 15px 5%;
+            }
+
+            .search-container {
+                margin: 15px 0;
+                width: 100%;
+            }
+
+            .search-container input {
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .secondary-featured {
+                grid-template-columns: 1fr;
+            }
+
+            .news-counter {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.8rem;
+            }
+
+            .featured-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .featured-content p {
+                display: none;
+            }
+
+            #newsletter-form {
+                flex-direction: column;
+            }
+
+            #newsletter-form input,
+            #newsletter-form button {
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            #newsletter-form button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="top-bar">
+            <div class="date-time">
+                <span id="date"></span>
+                <span id="time"></span>
+            </div>
+            <div class="weather-widget">
+                <span id="weather-icon"><i class="fas fa-cloud-sun"></i></span>
+                <span id="weather-temp">24°C</span>
+                <span id="weather-city">New Delhi</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <div class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chronicles Logo" style="width:70; height: 70; max-width: 70px;">
+                <div class="logo-text">क्रोnicles</div>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="latest.html">Latest News</a></li>
+                <li><a href="world.html">World</a></li>
+                <li><a href="business.html">Business</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="technology.html" class="active">Technology</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="health.html">Health</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search news...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-label">BREAKING:</div>
+        <div class="ticker">
+            <ul>
+                <li><a href="#">Apple announces new AI-powered features for iOS 18 at WWDC</a></li>
+                <li><a href="#">Tesla unveils fully autonomous robotaxi prototype</a></li>
+                <li><a href="#">Microsoft confirms major Windows 12 update coming this fall</a></li>
+                <li><a href="#">Global chip shortage expected to continue through 2025</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- News Counter -->
+    <div class="news-counter">
+        <div class="counter-item">
+            <span class="counter-number" data-target="12500">0</span>
+            <span class="counter-label">Daily Readers</span>
+        </div>
+        <div class="counter-item">
+            <span class="counter-number" data-target="350">0</span>
+            <span class="counter-label">News Published</span>
+        </div>
+        <div class="counter-item">
+            <span class="counter-number" data-target="50">0</span>
+            <span class="counter-label">Journalists</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Featured News Section -->
+        <section class="featured-news">
+            <h2 class="section-title">Featured Technology Stories</h2>
+            <div class="featured-container">
+                <div class="main-featured">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="AI Technology">
+                    <div class="featured-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">Generative AI Breakthrough Could Transform Creative Industries</a></h3>
+                        <p>New research from DeepMind demonstrates AI systems capable of generating highly realistic images, music, and video from simple text prompts, potentially revolutionizing content creation across multiple industries.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            <span><i class="far fa-comment"></i> 87 comments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secondary-featured">
+                    <div class="featured-item">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Quantum Computing">
+                        <div class="featured-item-content">
+                            <span class="category technology">Technology</span>
+                            <h4><a href="#">Quantum Computer Achieves 1000-Qubit Milestone</a></h4>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Apple Vision Pro">
+                        <div class="featured-item-content">
+                            <span class="category technology">Technology</span>
+                            <h4><a href="#">Apple Vision Pro 2 Rumored for Early 2025 Release</a></h4>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 8 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Neuralink">
+                        <div class="featured-item-content">
+                            <span class="category technology">Technology</span>
+                            <h4><a href="#">Neuralink Receives FDA Approval for Human Trials</a></h4>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i> 12 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News Section -->
+        <section class="latest-news">
+            <h2 class="section-title">Latest Technology News</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ChatGPT">
+                    <div class="news-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">ChatGPT-5 Shows 'Sparks' of Artificial General Intelligence</a></h3>
+                        <p>OpenAI's latest model demonstrates unprecedented reasoning capabilities, with researchers noting it can solve novel problems without explicit training, marking a significant step toward AGI.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 1 hour ago</span>
+                            <span><i class="far fa-comment"></i> 42 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Quantum Computing">
+                    <div class="news-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">IBM Unveils 1000-Qubit Quantum Processor</a></h3>
+                        <p>IBM's new Condor processor marks a major milestone in quantum computing, offering potential breakthroughs in materials science, drug discovery, and cryptography.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 3 hours ago</span>
+                            <span><i class="far fa-comment"></i> 28 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Apple Vision Pro">
+                    <div class="news-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">Apple Vision Pro 2 Rumored to Feature Revolutionary Display</a></h3>
+                        <p>Leaked reports suggest Apple's next-generation AR/VR headset will include micro-OLED displays with 8K resolution per eye and dramatically reduced weight.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            <span><i class="far fa-comment"></i> 35 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Neuralink">
+                    <div class="news-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">Neuralink's First Human Trial Shows Promising Results</a></h3>
+                        <p>Initial data from Elon Musk's brain-computer interface company demonstrates paralyzed patients controlling devices with their thoughts at unprecedented speeds.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 7 hours ago</span>
+                            <span><i class="far fa-comment"></i> 19 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="AI">
+                    <div class="news-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">EU Passes Groundbreaking AI Regulation Act</a></h3>
+                        <p>The European Union's comprehensive AI Act establishes strict guidelines for high-risk applications while promoting innovation in safe AI development.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 9 hours ago</span>
+                            <span><i class="far fa-comment"></i> 31 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1624953587687-daf255b6b80a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Robotics">
+                    <div class="news-content">
+                        <span class="category technology">Technology</span>
+                        <h3><a href="#">Boston Dynamics Unveils New Humanoid Robot for Industrial Use</a></h3>
+                        <p>The Atlas 2.0 robot demonstrates remarkable dexterity and problem-solving skills, capable of performing complex tasks in unpredictable environments.</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i> 11 hours ago</span>
+                            <span><i class="far fa-comment"></i> 24 comments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D
