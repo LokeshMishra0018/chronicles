@@ -427,6 +427,87 @@
             height: 3px;
             background: #e74c3c;
         }
+         /* Crime News Grid */
+         .crime-featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .crime-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .crime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .crime-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .crime-card-content {
+            padding: 20px;
+        }
+        
+        .crime-card-content .location {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .crime-card-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        .crime-card-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
         
         .meta {
             display: flex;
@@ -451,12 +532,11 @@
                 <span id="weather-city">New Delhi</span>
             </div>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <div class="dark-mode-toggle">
-                    <i class="fas fa-moon"></i>
+                    <!-- <i class="fas fa-moon"></i> -->
                 </div>
             </div>
         </div>
@@ -1381,6 +1461,7 @@
         </div>
     </div>
     
+    
     <script>
     $(document).ready(function(){
         $(".SMbriefScoreWidget").hide();
@@ -1415,6 +1496,81 @@
             })
         });
     </script>
+    <!-- Video Reports Section -->
+    <section>
+        <h2 class="section-title">Video Reports</h2>
+        <div class="crime-featured">
+            <article class="crime-card">
+                <iframe 
+                        src="https://drive.google.com/file/d/1Nd-2ETha33OP1rFX5O7I083Q2SQUd15C/preview" 
+                        width="100%" 
+                        height="250" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+
+
+                <div class="crime-card-content">
+                    <span class="location">Exclusive</span>
+                    <h3>क्रिकेट का जश्न: पसंदीदा खिलाड़ी और वे आइकॉन्स जो देते हैं प्रेरणा
+                    </h3>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 2 hours ago</span>
+                        <span><i class="fas fa-eye"></i> 1.2M views</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="crime-card">
+                <iframe 
+    src="https://drive.google.com/file/d/1r7YsTAo9OrIMmwfA7O9SgUmZ9InGcotB/preview" 
+    width="100%" 
+    height="250" 
+    allow="autoplay" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+
+
+                <div class="crime-card-content">
+                    <span class="location">Exclusive</span>
+                    <h3>मनपसंद खेल: आपका जुनून किससे जुड़ा है और क्यों?
+
+                    </h3>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 2 hours ago</span>
+                        <span><i class="fas fa-eye"></i> 1.2M views</span>
+                    </div>
+                </div>
+            </article>
+            
+
+            <article class="crime-card">
+                <iframe 
+    src="https://drive.google.com/file/d/1iKR3_WOx_P8YJXAPusUk9A9AaYp_SA_j/preview" 
+    width="100%" 
+    height="250" 
+    allow="autoplay" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+
+
+                <div class="crime-card-content">
+                    <span class="location">Exclusive</span>
+                    <!-- <h3>हिमानी नरवाल केस में नया खुलासा: वीडियो में दिखे संदिग्ध</h3> -->
+                     <h3>नीरज की भाला फेंक में जीत: नई पीढ़ी के एथलीट्स के लिए प्रेरणा का मार्ग
+
+                    </h3>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> 2 hours ago</span>
+                        <span><i class="fas fa-eye"></i> 1.2M views</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     
@@ -1672,6 +1828,7 @@
                 </article>
             </div>
         </section> -->
+        
     </main>
 
     <!-- Footer -->
@@ -1679,10 +1836,11 @@
         <div class="footer-container">
             <div class="footer-about">
                 <h3>About Chronicles</h3>
-                <p>Chronicles is your premier destination for comprehensive news coverage across all categories including world affairs, business, sports, technology, entertainment and health.</p>
+                <p>Chronicles is a leading independent news organization dedicated to providing accurate, unbiased
+                    reporting from around the world. Our team of experienced journalists works around the clock to bring
+                    you the most important stories.</p>
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="Edutech Logo" style="width:50; height: 50; max-width: 50px;">
-                    <span>क्रोnicles</span>
+                    <i class="fas fa-newspaper"></i> Chronicles
                 </div>
             </div>
 
@@ -1699,34 +1857,35 @@
             </div>
 
             <div class="footer-links">
-                <h3>Categories</h3>
+                <h3>News Categories</h3>
                 <ul>
-                    <li><a href="#">World</a></li>
-                    <li><a href="#">Business</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">Health</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crime.html">Crime</a></li>
+                    <li><a href="political.html">Political</a></li>
+                    <li><a href="sports.html">Cricket</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
                 </ul>
             </div>
 
             <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 News Street, New Delhi 110001</p>
-                <p><i class="fas fa-phone"></i> +91 9876543210</p>
-                <p><i class="fas fa-envelope"></i> contact@chronicles.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Lady Shri Ram College For Women</p>
+                <p><i class="fas fa-phone"></i> +91-987xxxxx99</p>
+                <p><i class="fas fa-envelope"></i> mishrayogita0018@gmail.com</p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a> -->
+                    <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    <a href="https://www.instagram.com/yogitamishra_l?igsh=b3phOG5pdDV5bW8z" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.youtube.com/@Yogitamishra18" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/yogita-mishra-4b61862b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B53lhXgzcTAydm1pKN4cMZg%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2023 Chronicles. All Rights Reserved.</p>
+            <p>&copy; 2025 Chronicles. All Rights Reserved.</p>
         </div>
     </footer>
 
